@@ -1,0 +1,51 @@
+YACHT CLUB GAMES LLC LICENSE (Game Engine and Game Tools)
+
+Yacht Club Games LLC hereby grants any person (hereinafter "You") obtaining a
+copy of the Yacht Club Games LLC Game Engine ("Game Engine") and/or the Yacht
+Club Games LLC Game Development Tools ("Game Tools") in object code form,
+source code form and/or associated documentation files (the "Software"), free
+of charge, a license to use, copy and/or modify the Game Engine or Game Tools
+to create a game that incorporates all of the Game Engine or portions thereof
+("Your Game") and a license to publish, distribute and/or sell, whether in
+source code form, executable form, or both, Your Game with the Game Engine or
+portions thereof incorporated, and permitting others to do the same, subject
+to the following conditions:
+
+1) If any part of the Software is provided by You in source code form, the
+   following copyright notice and this License must be included with all
+   copies or substantial portions of the Software and with materials that
+   would be considered, under U.S. copyright law, to be derivative works of
+   the Software:
+
+   Copyright (c) 2016 Yacht Club Games LLC
+
+2) This License does not extend to stand-alone redistribution of the Game
+   Engine or Game Tools without incorporation into Your Game, wherein "Your
+   Game" means programming that provides a substantially additional creative
+   experience to end users beyond mere interaction with the Game Engine.
+
+   However the Game Engine and Game Tools Software are simultaneously licensed
+   under the Microsoft Reciprocal License ("MS-RL") and stand-alone
+   redistribution of the Game Engine or Game Tools (as originally obtained by
+   you or modified) is permitted under the MS-RL.
+
+   You are free to choose between (a) complying with the terms of this License
+   as a whole and (b) complying with the terms of the MS-RL as a whole.
+
+3) Different versions of the Game Engine and Game Tools might be for use on
+   different platforms.  A platform might be developed, provided or controlled
+   by a third-party platform developer ("Platform Developer").  This License
+   does not include rights that such a Platform Developer does not allow Yacht
+   Club Games LLC to freely grant to others.  For example, operating on a
+   particular platform might require access to confidential information
+   controlled by a Platform Developer and only provided under certain
+   conditions.  You agree to obtain your own rights or license from such
+   Platform Developer and to determine for yourself what rights you need.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND PATENT, COPYRIGHT AND/OR OTHER
+INTELLECTUAL PROPERTY NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
