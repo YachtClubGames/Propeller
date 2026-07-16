@@ -153,7 +153,7 @@ ureg ycBitUtils::PopCount( const uint32_t x )
 	for( ; n; ++count ) { n &= n - 1; }
 	return count;
 #else
-#error ycBitUtils::PopCount needs to be implemented for this platform!
+	#error ycBitUtils::PopCount needs to be implemented for this platform!
 #endif
 }
 
@@ -168,13 +168,15 @@ ureg ycBitUtils::PopCount64( const uint64_t x )
 	_x = (_x + (_x >> 4)) & 0x0f0f0f0f0f0f0f0fllu;
 	return ((_x * 0x0101010101010101llu) >> 56);
 	// some cpus aren't supporting this, seeing it even on a haswell
+	// there was a microsoft bug, maybe fixed on newer vs:
+	// https://developercommunity.visualstudio.com/t/Illegal-Instruction-POPCNT-emitted-in-MS/10576397
 	//return __popcnt64( x );
 #elif defined YC_CTZ_CLZ_SW_IMPL
 	ureg count = 0;
 	for( ; n; ++count ) { n &= n - 1; }
 	return count;
 #else
-#error ycBitUtils::PopCount needs to be implemented for this platform!
+	#error ycBitUtils::PopCount needs to be implemented for this platform!
 #endif
 }
 

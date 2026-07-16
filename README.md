@@ -1,7 +1,7 @@
 # Propeller
 
-> This repository does not currently contain a complete and compilable copy of
-> the engine, only portions of it.
+> This repository does not currently contain a complete copy of the engine,
+> only portions of it.
 
 Propeller is the game engine behind Yacht Club Games' title Mina the Hollower!
 

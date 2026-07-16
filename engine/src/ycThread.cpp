@@ -246,7 +246,14 @@ void ycThread::Sleep( ureg milliseconds )
 {
 	#if YC_NDA
 	#elif defined YC_MSFT
-		::Sleep( DWORD(milliseconds) );
+		if( HasMicroSleep() ) // timeBeginPeriod(1) is not as reliable as it used to be, let's try to avoid needing it
+		{
+			MicroSleep( milliseconds * 1000 );
+		}
+		else
+		{
+			::Sleep( DWORD(milliseconds) );
+		}
 	#elif YC_NDA
 	#elif defined YC_PTHREAD
 		usleep( uint32_t(milliseconds) * 1000 );

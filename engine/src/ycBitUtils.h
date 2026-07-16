@@ -6,7 +6,6 @@
 \namespace ycBitField
 
 Any common tools for operating on bit-wise data
-
 */
 
 namespace ycBitUtils
@@ -78,8 +77,6 @@ namespace ycBitUtils
 	{ 
 		return ( (x & flag) != 0 );
 	}
-
-
 }
 
 struct ycBitmaskIterator
@@ -100,8 +97,6 @@ struct ycBitmaskIterator
 			remaining ^= ( 1ULL << index );
 			return true;
 		}
-
 		return false;
 	}
 };
-
