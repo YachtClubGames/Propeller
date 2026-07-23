@@ -113,32 +113,22 @@ void ycString::SetLiteral( const char* str, const ycSize_t len, const ycSize_t c
 {
 	Clear();
 	m_str      = const_cast<char*>(str); // Note: not nice, may need to rethink constness here.
-	m_alloc = m_str;
-	m_len   = len      == ycSize_t(-1) ? ycStringUtils::Length( str ) : len ;
+	m_alloc    = m_str;
+	m_len      = len      == ycSize_t(-1) ? ycStringUtils::Length( str ) : len ;
 	m_capacity = capacity == ycSize_t(-1) ? m_len+1                   : capacity ;
 	m_mem      = nullptr;
 }
 
-void ycString::Reserve( const ycSize_t minCapacity, const char * copyStr /*= nullptr*/ )
+void ycString::Reserve( const ycSize_t minCapacity )
 {
 	if( m_capacity >= minCapacity ) { return; }
 
 	ycAssert( m_mem );
 	ycAssert( IsGrowable() );
 
-	char *str = (char*)YC_ALLOC( m_mem, minCapacity, YC_PTR_SIZE, "ycString" ); // could use the string itself, but until debug string storing is sorted use this
-	if( copyStr )
-	{
-		ycStringUtils::Copy( str, copyStr );
-		if( m_str )
-		{
-			if( !IsMemoryManagedExternal() )
-			{
-				YC_FREE( m_mem, m_alloc );
-			}
-		}
-	}
-	else if( m_str )
+	char* str = (char*)YC_ALLOC( m_mem, minCapacity, YC_PTR_SIZE, "ycString" ); // could use the string itself, but until debug string storing is sorted use this
+	str[0] = '\0'; // for safety, always shove a NUL byte in there (same as the ctor does)
+	if( m_str )
 	{
 		ycMemCpy( str, m_str, m_capacity );
 		if( !IsMemoryManagedExternal() )
@@ -183,7 +173,7 @@ void ycString::Set( const char* str, ycSize_t len )
 	if( size > m_capacity )
 	{
 		ycSize_t pad_size = (size + 16) & ycSize_t(-16);
-		Reserve( pad_size, "" );
+		Reserve( pad_size );
 	}
 	if( size )
 	{
@@ -689,6 +679,11 @@ void ycString::PadToLength( char c, ycSize_t pos )
 void ycString::SetAllocator( ycAllocator* mem )
 {
 	m_mem = mem;
+}
+
+ycAllocator* ycString::GetAllocator()
+{
+	return m_mem;
 }
 
 void ycString::SetMemoryManagedExternal( bool external )

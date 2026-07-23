@@ -69,7 +69,7 @@ public:
 
 	void SetLiteral( const char* str, const ycSize_t len = ycSize_t(-1), const ycSize_t capacity = ycSize_t(-1) ); //!< does not copy the string (like the kNoCopy ctor)
 
-	void Reserve( const ycSize_t minCapacity, const char * copyStr = nullptr );
+	void Reserve( const ycSize_t minCapacity );
 	void ReserveMore( const ycSize_t add ); //!< same as Reserve( Length()+1 /*NUL*/ + additional ), use this before appending a bunch of bits!
 	
 	bool operator == ( const ycString& rhs ) const;
@@ -134,7 +134,8 @@ public:
 
 	void PadToLength( char c, ycSize_t pos );
 
-	void SetAllocator( ycAllocator* mem );
+	void SetAllocator( ycAllocator* mem ); // this function is dangerous, if the allocator has an allocation already, it will _not_ re-allocate it into the new one, so when it tries to free, it will use the wrong allocator
+	ycAllocator* GetAllocator();
 
 	void SetGrowable( bool growable = true );
 	bool IsGrowable();

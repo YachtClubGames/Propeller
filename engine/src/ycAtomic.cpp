@@ -384,4 +384,3 @@ YC_BEGIN_TEST( ycAtomic_SpinLock )
 }
 
 #endif // YC_TEST
-

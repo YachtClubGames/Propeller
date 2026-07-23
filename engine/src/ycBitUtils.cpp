@@ -170,6 +170,7 @@ ureg ycBitUtils::PopCount64( const uint64_t x )
 	// some cpus aren't supporting this, seeing it even on a haswell
 	// there was a microsoft bug, maybe fixed on newer vs:
 	// https://developercommunity.visualstudio.com/t/Illegal-Instruction-POPCNT-emitted-in-MS/10576397
+	// note: Mina's release was compiled on a VS version *higher* than this bug says it was fixed in -- still present? something else going on?
 	//return __popcnt64( x );
 #elif defined YC_CTZ_CLZ_SW_IMPL
 	ureg count = 0;

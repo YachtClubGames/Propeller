@@ -30,7 +30,7 @@ void ycZeroArray( t_type (&array)[ t_len ] ) { ycMemSet( array, 0, sizeof(t_type
 
 void* ycMemCpy( void* YC_RESTRICT dst, const void* YC_RESTRICT src, const size_t numBytes ); //!< intentionally does not use ycSize_t, to match std memcpy
 
-void* ycMemMove( void* YC_RESTRICT dst, const void* YC_RESTRICT src, const size_t numBytes ); //!< intentionally does not use ycSize_t, to match std memcpy
+void* ycMemMove( void* dst, const void* src, const size_t numBytes ); //!< intentionally does not use ycSize_t, to match std memcpy
 
 bool ycMemEq( const void* a, const void* b, const size_t numBytes ); // similar to memcmp but doesnt have the <0, 0, >0 behavior
 

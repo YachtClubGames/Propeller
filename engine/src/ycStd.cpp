@@ -12,7 +12,7 @@ void* ycMemCpy( void* YC_RESTRICT dst, const void* YC_RESTRICT src, const size_t
 	return memcpy( dst, src, numBytes );
 }
 
-void* ycMemMove( void* YC_RESTRICT dst, const void* YC_RESTRICT src, const size_t numBytes )
+void* ycMemMove( void* dst, const void* src, const size_t numBytes )
 {
 	return memmove( dst, src, numBytes );
 }

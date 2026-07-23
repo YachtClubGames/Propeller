@@ -43,7 +43,7 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
- 
+
   <PropertyGroup Condition="'$(Platform)'=='x64'">
     <OutDir>build\pc\$(Configuration)64\</OutDir>
     <IntDir>build\pc\$(Configuration)64\obj\</IntDir>
@@ -52,11 +52,11 @@
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
       <SDLCheck>false</SDLCheck>
-      <PreprocessorDefinitions>_CONSOLE;YC_HEADLESS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>YC_OPENSOURCE;YC_HEADLESS;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdclatest</LanguageStandard_C>
-      <AdditionalIncludeDirectories>engine/src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>engine/src;stubs</AdditionalIncludeDirectories>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <Optimization Condition="'$(Configuration)'=='Debug'">Disabled</Optimization>
       <Optimization Condition="'$(Configuration)'=='DebugOpt'">Full</Optimization>
@@ -81,7 +81,7 @@
       <OptimizeReferences Condition="'$(Configuration)'=='Release'">true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
- 
+
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -97,10 +97,15 @@
     <ClCompile Include="engine\src\ycAABB.cpp" />
     <ClCompile Include="engine\src\ycAllocator.cpp" />
     <ClCompile Include="engine\src\ycAtomic.cpp" />
+    <ClCompile Include="engine\src\ycBase64.cpp" />
     <ClCompile Include="engine\src\ycBitUtils.cpp" />
     <ClCompile Include="engine\src\ycBox.cpp" />
+    <ClCompile Include="engine\src\ycBumpAllocator.cpp" />
+    <ClCompile Include="engine\src\ycByteBuffer.cpp" />
     <ClCompile Include="engine\src\ycCapsule.cpp" />
+    <ClCompile Include="engine\src\ycChainedHash.cpp" />
     <ClCompile Include="engine\src\ycCircle.cpp" />
+    <ClCompile Include="engine\src\ycCmdList.cpp" />
     <ClCompile Include="engine\src\ycCollisionFeature.cpp" />
     <ClCompile Include="engine\src\ycCollisionFeatureUtil.cpp" />
     <ClCompile Include="engine\src\ycCollisionMtx3.cpp" />
@@ -108,16 +113,23 @@
     <ClCompile Include="engine\src\ycCollisionTest.cpp" />
     <ClCompile Include="engine\src\ycColor.cpp" />
     <ClCompile Include="engine\src\ycConeRay.cpp" />
+    <ClCompile Include="engine\src\ycCylinder.cpp" />
     <ClCompile Include="engine\src\ycDateTime.cpp" />
+    <ClCompile Include="engine\src\ycFileStdio.cpp" />
+    <ClCompile Include="engine\src\ycFourAabbs.cpp" />
     <ClCompile Include="engine\src\ycFrustum.cpp" />
     <ClCompile Include="engine\src\ycGeo.cpp" />
     <ClCompile Include="engine\src\ycHash.cpp" />
     <ClCompile Include="engine\src\ycLine.cpp" />
+    <ClCompile Include="engine\src\ycLinearCache.cpp" />
     <ClCompile Include="engine\src\ycLineSeg.cpp" />
     <ClCompile Include="engine\src\ycMath.cpp" />
+    <ClCompile Include="engine\src\ycMemPool.cpp" />
+    <ClCompile Include="engine\src\ycMemPoolTS.cpp" />
     <ClCompile Include="engine\src\ycMemTrack.cpp" />
     <ClCompile Include="engine\src\ycMtx4.cpp" />
     <ClCompile Include="engine\src\ycMutex.cpp" />
+    <ClCompile Include="engine\src\ycPagedLinearAllocator.cpp" />
     <ClCompile Include="engine\src\ycPagedList.cpp" />
     <ClCompile Include="engine\src\ycPagedVector.cpp" />
     <ClCompile Include="engine\src\ycPlane.cpp" />
@@ -125,11 +137,25 @@
     <ClCompile Include="engine\src\ycQuat.cpp" />
     <ClCompile Include="engine\src\ycRand.cpp" />
     <ClCompile Include="engine\src\ycRay.cpp" />
+    <ClCompile Include="engine\src\ycRectangle.cpp" />
+    <ClCompile Include="engine\src\ycRLE.cpp" />
     <ClCompile Include="engine\src\ycRtti.cpp" />
+    <ClCompile Include="engine\src\ycRWLock.cpp" />
     <ClCompile Include="engine\src\ycSemaphore.cpp" />
+    <ClCompile Include="engine\src\ycShaderAST.cpp" />
+    <ClCompile Include="engine\src\ycShaderGen.cpp" />
+    <ClCompile Include="engine\src\ycShaderGenGLSL.cpp" />
+    <ClCompile Include="engine\src\ycShaderGenHLSL.cpp" />
+    <ClCompile Include="engine\src\ycShaderGenMSL.cpp" />
+    <ClCompile Include="engine\src\ycShaderLexer.cpp" />
+    <ClCompile Include="engine\src\ycShaderParser.cpp" />
+    <ClCompile Include="engine\src\ycShaderTokens.cpp" />
     <ClCompile Include="engine\src\ycShape.cpp" />
     <ClCompile Include="engine\src\ycSimd.cpp" />
+    <ClCompile Include="engine\src\ycSlabAllocator.cpp" />
+    <ClCompile Include="engine\src\ycSlabAllocatorTS.cpp" />
     <ClCompile Include="engine\src\ycSphere.cpp" />
+    <ClCompile Include="engine\src\ycSpinLock.cpp" />
     <ClCompile Include="engine\src\ycStd.cpp" />
     <ClCompile Include="engine\src\ycString.cpp" />
     <ClCompile Include="engine\src\ycStringRef.cpp" />
@@ -144,18 +170,25 @@
     <ClCompile Include="engine\src\ycVec3.cpp" />
     <ClCompile Include="engine\src\ycVirtualMem.cpp" />
     <ClCompile Include="engine\src\ycVirtualMemoryPool.cpp" />
-    <ClCompile Include="stubs.cpp" />
+    <ClCompile Include="engine\src\ycVirtualMemoryPoolTS.cpp" />
+    <ClCompile Include="stubs\stubs.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine\src\ycAABB.h" />
     <ClInclude Include="engine\src\ycAllocator.h" />
+    <ClInclude Include="engine\src\ycArray.h" />
     <ClInclude Include="engine\src\ycAtomic.h" />
+    <ClInclude Include="engine\src\ycBase64.h" />
     <ClInclude Include="engine\src\ycBitField.h" />
     <ClInclude Include="engine\src\ycBitUtils.h" />
     <ClInclude Include="engine\src\ycBox.h" />
+    <ClInclude Include="engine\src\ycBumpAllocator.h" />
+    <ClInclude Include="engine\src\ycByteBuffer.h" />
     <ClInclude Include="engine\src\ycCapsule.h" />
+    <ClInclude Include="engine\src\ycChainedHash.h" />
     <ClInclude Include="engine\src\ycCircArray.h" />
     <ClInclude Include="engine\src\ycCircle.h" />
+    <ClInclude Include="engine\src\ycCmdList.h" />
     <ClInclude Include="engine\src\ycCollision.h" />
     <ClInclude Include="engine\src\ycCollisionBox.h" />
     <ClInclude Include="engine\src\ycCollisionCapsule.h" />
@@ -177,12 +210,19 @@
     <ClInclude Include="engine\src\ycCommon.h" />
     <ClInclude Include="engine\src\ycCompilerConfig.h" />
     <ClInclude Include="engine\src\ycConeRay.h" />
+    <ClInclude Include="engine\src\ycCPP.h" />
+    <ClInclude Include="engine\src\ycCylinder.h" />
     <ClInclude Include="engine\src\ycData.h" />
     <ClInclude Include="engine\src\ycDataSchema.h" />
     <ClInclude Include="engine\src\ycDateTime.h" />
     <ClInclude Include="engine\src\ycDepthConfig.h" />
+    <ClInclude Include="engine\src\ycDir.h" />
     <ClInclude Include="engine\src\ycEngineConfig.h" />
+    <ClInclude Include="engine\src\ycFile.h" />
+    <ClInclude Include="engine\src\ycFileRef.h" />
+    <ClInclude Include="engine\src\ycFileStreamer.h" />
     <ClInclude Include="engine\src\ycFloatRange.h" />
+    <ClInclude Include="engine\src\ycFourAabbs.h" />
     <ClInclude Include="engine\src\ycFrustum.h" />
     <ClInclude Include="engine\src\ycGeo.h" />
     <ClInclude Include="engine\src\ycHash.h" />
@@ -190,12 +230,18 @@
     <ClInclude Include="engine\src\ycInternalBufferAllocator.h" />
     <ClInclude Include="engine\src\ycIsPOD.h" />
     <ClInclude Include="engine\src\ycLine.h" />
+    <ClInclude Include="engine\src\ycLinearCache.h" />
     <ClInclude Include="engine\src\ycLineSeg.h" />
+    <ClInclude Include="engine\src\ycManagedFile.h" />
+    <ClInclude Include="engine\src\ycManagedPak.h" />
     <ClInclude Include="engine\src\ycMath.h" />
+    <ClInclude Include="engine\src\ycMemPool.h" />
+    <ClInclude Include="engine\src\ycMemPoolTS.h" />
     <ClInclude Include="engine\src\ycMemTrack.h" />
     <ClInclude Include="engine\src\ycMtx4.h" />
     <ClInclude Include="engine\src\ycMutex.h" />
     <ClInclude Include="engine\src\ycOpenHash.h" />
+    <ClInclude Include="engine\src\ycPagedLinearAllocator.h" />
     <ClInclude Include="engine\src\ycPagedList.h" />
     <ClInclude Include="engine\src\ycPagedVector.h" />
     <ClInclude Include="engine\src\ycPlane.h" />
@@ -203,11 +249,26 @@
     <ClInclude Include="engine\src\ycQuat.h" />
     <ClInclude Include="engine\src\ycRand.h" />
     <ClInclude Include="engine\src\ycRay.h" />
+    <ClInclude Include="engine\src\ycRectangle.h" />
+    <ClInclude Include="engine\src\ycRLE.h" />
     <ClInclude Include="engine\src\ycRtti.h" />
+    <ClInclude Include="engine\src\ycRWLock.h" />
     <ClInclude Include="engine\src\ycSemaphore.h" />
+    <ClInclude Include="engine\src\ycShaderAST.h" />
+    <ClInclude Include="engine\src\ycShaderGen.h" />
+    <ClInclude Include="engine\src\ycShaderGenGLSL.h" />
+    <ClInclude Include="engine\src\ycShaderGenHLSL.h" />
+    <ClInclude Include="engine\src\ycShaderGenMSL.h" />
+    <ClInclude Include="engine\src\ycShaderLexer.h" />
+    <ClInclude Include="engine\src\ycShaderMetaData.h" />
+    <ClInclude Include="engine\src\ycShaderParser.h" />
+    <ClInclude Include="engine\src\ycShaderTokens.h" />
     <ClInclude Include="engine\src\ycShape.h" />
     <ClInclude Include="engine\src\ycSimd.h" />
+    <ClInclude Include="engine\src\ycSlabAllocator.h" />
+    <ClInclude Include="engine\src\ycSlabAllocatorTS.h" />
     <ClInclude Include="engine\src\ycSphere.h" />
+    <ClInclude Include="engine\src\ycSpinLock.h" />
     <ClInclude Include="engine\src\ycStackString.h" />
     <ClInclude Include="engine\src\ycStartup.h" />
     <ClInclude Include="engine\src\ycStd.h" />
@@ -227,6 +288,7 @@
     <ClInclude Include="engine\src\ycVector.h" />
     <ClInclude Include="engine\src\ycVirtualMem.h" />
     <ClInclude Include="engine\src\ycVirtualMemoryPool.h" />
+    <ClInclude Include="engine\src\ycVirtualMemoryPoolTS.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="engine\src\ycPopDebugOpt.inc" />

@@ -11,7 +11,7 @@ namespace ycSystem
 	void GetCpuCount( ureg* physicalCores, ureg* logicalCores );
 	
 	ycSize_t GetEnv( char* dstBuf, const ycSize_t bufSize, const char* name ); //!< returns zero if the name does not exist, otherwise returns the number of buffer bytes needed (including the terminating NUL); if the passed if large enough, writes the value to it
-	bool GetEnv( const char* name );
+	bool GetEnv(const char* name); // returns true if a value exists and the value is not "0" or "false" (case-insensitive)
 
 	void SetEnv( const char* name, const char* val );
 	void UnsetEnv( const char* name );
