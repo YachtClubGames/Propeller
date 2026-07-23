@@ -337,11 +337,7 @@ void PostProcessFileJob( void* userData )
 
 /*static*/ void ycFileManager::Start( ycAllocatorTS* /*allocator*/ )
 {
-	#ifdef YC_FILEMANAGER_MPROTECT_FILE_DATA
-		s_fileMem = ycSysAllocator::GetDefault();
-	#else
-		s_fileMem = g_defaultMem;
-	#endif
+	s_fileMem = g_defaultMem;
 	s_fileTable.Init( g_defaultMem );
 	s_pakTable.Init( g_defaultMem );
 
@@ -521,13 +517,6 @@ void PostProcessFileJob( void* userData )
 
 /*static*/ void ycFileManager::FinishLoad( ycManagedFile* managedFile )
 {
-	#ifdef YC_FILEMANAGER_MPROTECT_FILE_DATA
-		//printf( "mprotect '%.*s'\n", int(managedFile->m_path.Length()), managedFile->m_path.Get() );
-		if( !managedFile->m_path.ContainsI( ".stb" ) ) // looks like dialogue manager modifies file data? not sure whether it's intentional
-		{
-			sceKernelMprotect( managedFile->m_data, managedFile->m_size, SCE_KERNEL_PROT_CPU_READ );
-		}
-	#endif
 	for(;;)
 	{
 		const RefCountState prev = managedFile->GetRefCountState();
@@ -725,16 +714,6 @@ void PostProcessFileJob( void* userData )
 		if( initialFileState.flags & kFileFlag_PakLoadingCount )
 		{
 			ycEngine::GetJobQueue().Queue( PostProcessFileJob, managedFile );
-		}
-		else
-		{
-#ifdef YC_FILEMANAGER_MPROTECT_FILE_DATA
-			//printf( "mprotect '%.*s'\n", int(managedFile->m_path.Length()), managedFile->m_path.Get() );
-			if( !managedFile->m_path.ContainsI( ".stb" ) ) // looks like dialogue manager modifies file data? not sure whether it's intentional
-			{
-				sceKernelMprotect( managedFile->m_data, managedFile->m_size, SCE_KERNEL_PROT_CPU_READ );
-			}
-#endif
 		}
 		#endif // YC_FILEMANAGER_ENABLE_AUTO_FIXUP
 	}
